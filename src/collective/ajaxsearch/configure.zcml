@@ -1,0 +1,40 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.ajaxsearch">
+
+    <five:registerPackage package="." initialize=".initialize" />
+
+    <i18n:registerTranslations directory="locales" />
+    
+    <include package=".browser" />
+    <include package="plone.app.registry" />
+
+    <genericsetup:registerProfile
+        name="default"
+        title="collective.ajaxsearch"
+        directory="profiles/default"
+        description="collective.ajaxsearch"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        i18n:attributes="title; description"
+        />
+
+    <genericsetup:registerProfile
+        name="uninstall"
+        title="collective.ajaxsearch"
+        directory="profiles/uninstall"
+        description="Uninstall collective.ajaxsearch"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        i18n:attributes="title; description"
+        />
+
+    <!-- -*- extra stuff goes here -*- -->
+    <browser:resourceDirectory
+        name="collective.ajaxsearch"
+        directory="static"
+        />
+  
+</configure>

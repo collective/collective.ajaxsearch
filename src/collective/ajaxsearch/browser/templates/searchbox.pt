@@ -1,0 +1,16 @@
+<tal:block i18n:domain="collective.ajaxsearch" tal:define="navigation_root_url view/navigation_root_url; search_input_id view/search_input_id;">
+
+    <div id="portal_ajaxsearch">
+
+        <form name="ajaxsearch_form" id="ajaxsearch_form" method="post" tal:attributes="action string:${navigation_root_url}/search; id string:${search_input_id}_form">
+
+            <input name="SearchableText" type="text" size="18" value="" title="Buscar em direitos humanos" accesskey="4" tal:attributes="value request/form/SearchableText|nothing; id search_input_id" class="searchField inputLabel" />
+            <input class="searchButton" type="submit" value="Search" i18n:attributes="value" />
+
+        </form>
+
+        <div class="ajaxsearch_result"></div>
+
+    </div>
+
+</tal:block>

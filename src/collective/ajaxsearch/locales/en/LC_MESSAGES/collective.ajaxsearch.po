@@ -1,0 +1,44 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2013-02-15 16:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ./interfaces/interfaces.py:45
+msgid "Group Info"
+msgstr ""
+
+#: ./interfaces/interfaces.py:26
+msgid "Group Name"
+msgstr ""
+
+#: ./interfaces/interfaces.py:46
+msgid "Informations of the group"
+msgstr ""
+
+#: ./interfaces/interfaces.py:27
+msgid "Name for the group"
+msgstr ""
+
+#: ./interfaces/interfaces.py:31
+msgid "Portal Types"
+msgstr ""
+
+#: ./interfaces/interfaces.py:32
+msgid "Portal Types to search in this group"
+msgstr ""
+
+#: ./browser/templates/searchbox.pt:8
+msgid "Search"
+msgstr ""
+

@@ -1,0 +1,44 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2013-02-15 16:37+0000\n"
+"PO-Revision-Date: 2013-02-15 16:22+0000\n"
+"Last-Translator: Bruno P. Gonçalves <bruno.goncalves@avadora.com.br>\n"
+"Language-Team: Brasileiro <plone@avadora.com.br>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: pt-br\n"
+"Language-Name: Português do Brasil\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: avadora.com.br\n"
+
+#: ./interfaces/interfaces.py:45
+msgid "Group Info"
+msgstr "Informações do Grupo"
+
+#: ./interfaces/interfaces.py:26
+msgid "Group Name"
+msgstr "Nome do Grupo"
+
+#: ./interfaces/interfaces.py:46
+msgid "Informations of the group"
+msgstr "Informações do grupo de busca"
+
+#: ./interfaces/interfaces.py:27
+msgid "Name for the group"
+msgstr "Nome para o grupo de busca"
+
+#: ./interfaces/interfaces.py:31
+msgid "Portal Types"
+msgstr "Tipos"
+
+#: ./interfaces/interfaces.py:32
+msgid "Portal Types to search in this group"
+msgstr "Tipos de conteudo para buscar"
+
+#: ./browser/templates/searchbox.pt:8
+msgid "Search"
+msgstr "Buscar"
+
