@@ -1,0 +1,4 @@
+collective.ajaxsearch
+=====================
+
+collective.ajaxsearch
