@@ -4,8 +4,10 @@
 
         <form name="ajaxsearch_form" id="ajaxsearch_form" method="post" tal:attributes="action string:${navigation_root_url}/search; id string:${search_input_id}_form">
 
-            <input name="SearchableText" type="text" size="18" value="" title="Buscar em direitos humanos" accesskey="4" tal:attributes="value request/form/SearchableText|nothing; id search_input_id" class="searchField inputLabel" />
+            <input name="SearchableText" type="text" size="18" value="" title="Search for all site" accesskey="4" tal:attributes="value request/form/SearchableText|nothing; id search_input_id" class="searchField inputLabel" i18n:attributes="title"/>
             <input class="searchButton" type="submit" value="Search" i18n:attributes="value" />
+            <input type="hidden" name="legend_search_for_all" value="Search for all" i18n:attributes="value" />
+            <input type="hidden" name="legend_search_for_more" value="Search for more" i18n:attributes="value" />
 
         </form>
 

@@ -28,6 +28,8 @@
 
 #portal_ajaxsearch ul li {
     display: block;
+    height: 22px;
+    line-height: 22px;
 }
 
 .ajaxsearch_result h3 {
@@ -54,8 +56,12 @@
     font-size: 12px;
 }
 
+#portal_ajaxsearch ul li.ver-mais a span,
+#portal_ajaxsearch div.ver-mais-geral a span {
+    font-weight: bold;
+}
+
 #portal_ajaxsearch div.ver-mais-geral {
-    background: transparent url(images/ver-mais-ajax.png) 3px 5px no-repeat;
     text-align: center;
     margin: 0 0 15px 0;
 }

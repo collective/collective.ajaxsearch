@@ -47,7 +47,11 @@ var retira_acentos = function(palavra) {
  */
 var doAjaxRequest = function() {
     var query = $('#portal_ajaxsearch form input[type="text"]').val();
-    
+   
+    // Busca as traduções
+    var search_for_all = $('input[name="legend_search_for_all"]').val();
+    var search_for_more = $('input[name="legend_search_for_more"]').val();
+
     // Faz a requisição do conteudo da busca
     $.ajax({
         url: './ajaxsearch',
@@ -88,7 +92,7 @@ var doAjaxRequest = function() {
                     // Adiciona o ver mais do grupo
                     var li = '<li class="ver-mais">' + 
                         '<a href="/url">' + 
-                        'ver mais resultados para <span>' + query + '</span>' + 
+                        search_for_more + ' <span>' + query + '</span>' + 
                         '</a>' + 
                         '</li>';
                    $('.' + unique_name + '_result').append(li);
@@ -98,7 +102,7 @@ var doAjaxRequest = function() {
             // Adiciona o exibir todos os resultados
             var li = '<div class="ver-mais-geral">' + 
                 '<a href="#">' + 
-                'ver todos os resultados para <span>' + query + '</span>' + 
+                search_for_all + ' <span>' + query + '</span>' + 
                 '</a>' + 
                 '</div>';
             $('.ajaxsearch_result').append(li);

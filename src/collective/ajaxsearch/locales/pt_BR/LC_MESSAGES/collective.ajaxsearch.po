@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-02-15 16:37+0000\n"
+"POT-Creation-Date: 2013-02-19 13:12+0000\n"
 "PO-Revision-Date: 2013-02-15 16:22+0000\n"
 "Last-Translator: Bruno P. Gonçalves <bruno.goncalves@avadora.com.br>\n"
 "Language-Team: Brasileiro <plone@avadora.com.br>\n"
@@ -41,4 +41,16 @@ msgstr "Tipos de conteudo para buscar"
 #: ./browser/templates/searchbox.pt:8
 msgid "Search"
 msgstr "Buscar"
+
+#: ./browser/templates/searchbox.pt:9
+msgid "Search for all"
+msgstr "Procurar por todos"
+
+#: ./browser/templates/searchbox.pt:7
+msgid "Search for all site"
+msgstr "Buscar em todo o site"
+
+#: ./browser/templates/searchbox.pt:10
+msgid "Search for more"
+msgstr "Procurar por mais"
 
