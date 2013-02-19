@@ -42,7 +42,7 @@ class AjaxSearchView(BrowserView):
 
         # create output object
         for current_type in types:
-            output[current_type] = [{'url': brain.getPath(), 'titulo': brain.Title}
+            output[current_type] = [{'url': brain.getPath(), 'titulo': brain.Title, 'types': types[current_type]}
                                     for brain in rs if brain.Type in types[current_type]]
 
         # return json

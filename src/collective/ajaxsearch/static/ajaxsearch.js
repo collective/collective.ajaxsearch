@@ -47,6 +47,7 @@ var retira_acentos = function(palavra) {
  */
 var doAjaxRequest = function() {
     var query = $('#portal_ajaxsearch form input[type="text"]').val();
+    var baseUrl = $('#portal_ajaxsearch form input[type="text"]').closest('form').attr('action');
    
     // Busca as traduções
     var search_for_all = $('input[name="legend_search_for_all"]').val();
@@ -78,6 +79,9 @@ var doAjaxRequest = function() {
                         '</div>';
                     $('.ajaxsearch_result').append(out);
 
+                    // Armazena os tipos
+                    var portal_types = new Array();
+
                     // Percorre os resultados do grupo
                     $.each(grupo, function(index, item) {
                         var li = '<li>' + 
@@ -89,9 +93,15 @@ var doAjaxRequest = function() {
                         $('.' + unique_name + '_result').append(li);
                     });
 
+                    // Monta os tipos
+                    var types = "";
+                    $.each(grupo[0].types, function(index, item) {
+                        types += "&portal_type:Alist=" + item;
+                    });
+
                     // Adiciona o ver mais do grupo
                     var li = '<li class="ver-mais">' + 
-                        '<a href="/url">' + 
+                        '<a href="' + baseUrl + '?advanced_search=True&SearchableText=' + query + types + '">' + 
                         search_for_more + ' <span>' + query + '</span>' + 
                         '</a>' + 
                         '</li>';
@@ -101,7 +111,7 @@ var doAjaxRequest = function() {
 
             // Adiciona o exibir todos os resultados
             var li = '<div class="ver-mais-geral">' + 
-                '<a href="#">' + 
+                '<a href="' + baseUrl + '?SearchableText=' + query + '">' + 
                 search_for_all + ' <span>' + query + '</span>' + 
                 '</a>' + 
                 '</div>';
