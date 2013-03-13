@@ -12,6 +12,8 @@ $(function() {
 
         // Verifica a quantidade minima para fazer a busca
         if(query.length < 3) {
+            clearTimeout(timeout);
+            
             // Inicia o box dos resultados
             $('.ajaxsearch_result').html('');
             $('.ajaxsearch_result').hide();
