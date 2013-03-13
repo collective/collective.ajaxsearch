@@ -14,4 +14,5 @@ How to use
 =====================
 
 First of all, you need to create groups, and create relashionship between this group and portal_types.
+This product, add new viewlet callet collective.ajaxsearch, to replace default search viewlet
 When the user search for content, this product will group result by this groups and content types, as we can see in print screen

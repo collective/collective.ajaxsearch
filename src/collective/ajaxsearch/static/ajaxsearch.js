@@ -19,17 +19,16 @@ $(function() {
         }
 
         // Inicia o timer
-        timeout = setTimeout("doAjaxRequest()", 1500);
+        timeout = setTimeout("doAjaxRequest()", 150);
     });
-
 });
 
 /*!
  * Remove os acentos
  */
 var retira_acentos = function(palavra) {
-    com_acento = 'áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ';
-    sem_acento = 'aaaaaeeeeiiiiooooouuuucAAAAAEEEEIIIIOOOOOUUUUC';
+    com_acento = 'áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ ';
+    sem_acento = 'aaaaaeeeeiiiiooooouuuucAAAAAEEEEIIIIOOOOOUUUUC_';
     nova = '';
     for(i=0;i<palavra.length;i++) {
         if(com_acento.search(palavra.substr(i,1))>=0) {
@@ -60,13 +59,14 @@ var doAjaxRequest = function() {
         type: 'GET',
         dataType: 'json',
         success: function(data) {
+            console.log(data);
 
             // Inicia o box dos resultados
             $('.ajaxsearch_result').html('');
 
             // Percorre os tipos
             $.each(data, function(index, grupo) {
-               // Verifica se possui dados
+                // Verifica se possui dados
                 if(grupo.length > 0) {
                     var unique_name = retira_acentos(index.toLowerCase());
                     
@@ -93,15 +93,9 @@ var doAjaxRequest = function() {
                         $('.' + unique_name + '_result').append(li);
                     });
 
-                    // Monta os tipos
-                    var types = "";
-                    $.each(grupo[0].types, function(index, item) {
-                        types += "&portal_type:Alist=" + item;
-                    });
-
                     // Adiciona o ver mais do grupo
                     var li = '<li class="ver-mais">' + 
-                        '<a href="' + baseUrl + '?advanced_search=True&SearchableText=' + query + types + '">' + 
+                        '<a href="' + baseUrl + '?advanced_search=True&SearchableText=' + query + '&Subject:list=' + grupo[0].subject + '">' + 
                         search_for_more + ' <span>' + query + '</span>' + 
                         '</a>' + 
                         '</li>';

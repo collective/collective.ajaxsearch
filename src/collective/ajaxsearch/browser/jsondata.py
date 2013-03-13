@@ -8,7 +8,18 @@ from collective.ajaxsearch.interfaces.interfaces import IAjaxsearchSettings
 from plone.registry.interfaces import IRegistry
 import json
 
-types = {}
+types = {
+    'Crianças e Adolecentes' : 'Crianças e Adolescentes',
+    'Pessoas com Deficiência' : 'Pessoa com Deficiência',
+    'Pessoa Idosa' : 'Pessoa Idosa',
+    'LGBT' : 'LGBT',
+    'Adoção e Sequestro Internacional' : 'Adoção e Sequestro Internacional',
+    'Atuação Internacional' : 'Atuação Internacional',
+    'Mortos e Desaparecidos Políticos' : 'Mortos e Desaparecidos Políticos',
+    'Combates às Violações' : 'Combates às Violações',
+    'Combate ao Trabalho Escravo' : 'Combate ao Trabalho Escravo',
+    'Direito Para Todos' : 'Direitos para Todos'
+}
 
 class AjaxSearchView(BrowserView):
     """
@@ -16,34 +27,60 @@ class AjaxSearchView(BrowserView):
     """
     template = ViewPageTemplateFile('templates/searchresult.pt')
 
-    @memoize
     def __call__(self):
         """
+        Método que renderiza o resultado
         """
-        # get groups config
-        registry = queryUtility(IRegistry)
-        settings = registry.forInterface(IAjaxsearchSettings, check=False)
-
-        for config in settings.group_info:
-            types[config.group_name] = config.group_types
+        search = {}
+        output = {}
 
         # remove livesearch product
         livesearch = getToolByName(self.context, 'portal_javascripts')
         livesearch.getResource('livesearch.js').setEnabled(False)
         livesearch.cookResources()
 
-        output = {}
+        # Monta a query da busca
         query = self.request['query']
 
-        # do request for de query in the catalog
+        # Executa a busca
+        search['subject'] = [types[k] for k in types]
+        search['sort_on'] = 'sortable_title'
+        search['sort_order'] = 'ascending'
+        search['review_state'] = 'published'
+
+        # Faz a busca do conteudo
         ct = self.context.portal_catalog
-        rs = ct.searchResults(SearchableText=query,
-                              portal_type=sum([types[k] for k in types], []))
+        rs = ct(search)
 
-        # create output object
+        # Percorre os tipos para buscar
         for current_type in types:
-            output[current_type] = [{'url': brain.getPath(), 'titulo': brain.Title, 'types': types[current_type]}
-                                    for brain in rs if brain.Type in types[current_type]]
+            itens = [] 
+            total_group = 0
 
-        # return json
+            # Percorre os registros do catalog
+            for brain in rs:
+
+                # Verifica se está na mesma tag
+                if types[current_type] in brain.Subject:
+
+                    # Verifica se tem texto buscado
+                    if brain.Title.lower().find(query.lower()) >= 0:
+
+                        # Adiciona o registro à lista de resultados
+                        itens.append({'url':brain.getPath(), 'titulo':brain.Title, 'subject':types[current_type]});
+
+                        # Soma a quantidade total
+                        total_group += 1
+
+                        # Verifica se ja possui 3 resultados
+                        if total_group == 3:
+                            break
+
+            # Adiciona a lista de resultados ao output
+            output[current_type] = itens
+
+        # Coloca os limites
+
+
+        # Retorna o resultado em json
         return json.dumps(output)
